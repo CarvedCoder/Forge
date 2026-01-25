@@ -1,0 +1,14 @@
+[metadata]
+forge-version = ""
+generated = "1970-01-01T00:00:00Z"
+
+[project_info]
+project-name = ""
+project-standard = ""
+project-build-type = ""
+
+[abi]
+compiler = ""
+stdlib = ""
+cxx-standard = ""
+c-standard = ""

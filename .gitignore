@@ -1,0 +1,7 @@
+forge/target/
+.DS_Store
+forge_explanation.md
+forge_main_architecture.md
+abi_compatibility.md
+project_build_phases.md
+

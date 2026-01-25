@@ -1,0 +1,9 @@
+[package]
+name = "forge"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+chrono = { version = "0.4.43", features = ["serde"] }
+serde = { version = "1.0.228", features = ["derive"] }
+toml = "0.9.11"
