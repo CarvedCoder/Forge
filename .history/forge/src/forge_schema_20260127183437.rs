@@ -46,13 +46,13 @@ pub struct Abi {
 pub struct Package {
     pub name: String,
     pub version: String,
-    pub source: GitSource,
+    pub source: Source,
 }
 
 #[derive(Debug, Deserialize, Serialize, Default)]
 #[serde(deny_unknown_fields)]
-pub struct GitSource {
+pub struct Source {
     pub url: String,
     pub sha256: String,
-    pub commit_hash: String,
+    pub commitash: String,
 }

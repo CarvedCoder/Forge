@@ -46,7 +46,7 @@ pub struct Abi {
 pub struct Package {
     pub name: String,
     pub version: String,
-    pub source: GitSource,
+    pub source: GSource,
 }
 
 #[derive(Debug, Deserialize, Serialize, Default)]
