@@ -1,8 +1,16 @@
-use std::fs::{read_to_string, write};
+use std::{
+    fs::{create_dir_all, read_to_string, write},
+    path::Path,
+};
 
 use forge::forge_schema::ForgeSchema;
 
 fn generate_toml(path: &str) {
+    let path = Path::new(path);
+
+    if let Some(parent) = path.parent() {
+        create_dir_all(parent).expect("Failed to create .forge directory");
+    }
     let schema = ForgeSchema::default();
     let toml_schema =
         toml::to_string_pretty(&schema).expect("Failed to serialize forge schema to TOML");
