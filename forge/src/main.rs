@@ -17,6 +17,6 @@ fn load_toml(path: &str) {
 }
 
 fn main() {
-    generate_toml("forge.toml");
-    load_toml("forge.toml");
+    generate_toml("../.forge/forge.toml");
+    load_toml("../.forge/forge.toml");
 }
