@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Serialize, Deserialize, Default)]
 #[serde(deny_unknown_fields)]
 pub struct ForgeToml {
+    #[serde(alias = "project_info")]
     pub project: ProjectInfo,
 
     #[serde(default)]
