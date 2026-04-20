@@ -10,6 +10,7 @@ pub struct ForgeLock {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Metadata {
+    #[serde(rename = "forge-version")]
     pub forge_version: String,
     pub generated: DateTime<Utc>,
 }
