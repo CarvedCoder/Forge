@@ -11,8 +11,11 @@ pub struct ForgeToml {
 
 #[derive(Debug, Serialize, Deserialize, Default)]
 pub struct ProjectInfo {
+    #[serde(rename = "project-name")]
     pub name: String,
+    #[serde(rename = "project-standard")]
     pub standard: String,
+    #[serde(rename = "project-build-type")]
     pub build_type: String,
 }
 
