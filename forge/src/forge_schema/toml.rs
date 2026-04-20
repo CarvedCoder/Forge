@@ -6,7 +6,7 @@ pub struct ForgeToml {
     #[serde(alias = "project_info")]
     pub project: ProjectInfo,
 
-    #[serde(default)]
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub packages: Vec<Package>,
 }
 
