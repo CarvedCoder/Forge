@@ -7,3 +7,5 @@ project_build_phases.md
 .vscode/
 .history/
 .idea/
+build/
+.forge/
