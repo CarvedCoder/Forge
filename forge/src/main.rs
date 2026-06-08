@@ -1,30 +1,20 @@
-use std::{
-    fs::{create_dir_all, read_to_string, write},
-    path::Path,
-};
+mod cli;
 
-use forge::forge_schema::ForgeSchema;
-
-fn generate_toml(path: &str) {
-    let path = Path::new(path);
-
-    if let Some(parent) = path.parent() {
-        create_dir_all(parent).expect("Failed to create .forge directory");
-    }
-    let schema = ForgeSchema::default();
-    let toml_schema =
-        toml::to_string_pretty(&schema).expect("Failed to serialize forge schema to TOML");
-    write(path, toml_schema).expect("Failed to write forge.toml");
-    println!("forge.toml produced successfully");
-}
-
-fn load_toml(path: &str) {
-    let read_toml = read_to_string(path).expect("Failed to read forge.toml");
-    let config: ForgeSchema = toml::from_str(&read_toml).expect("Failed to parse forge.toml");
-    println!("{:#?}", config);
-}
+use cli::{Cli, Commands};
+use clap::Parser;
 
 fn main() {
-    generate_toml("../.forge/forge.toml");
-    load_toml("../.forge/forge.toml");
+    let cli = Cli::parse();
+
+    let result = match cli.command {
+        Commands::Init(args) => cli::init::execute(args),
+        Commands::Add(args) => cli::add::execute(args),
+        Commands::Run => cli::run::execute(),
+        Commands::Sync => cli::sync::execute(),
+    };
+
+    if let Err(e) = result {
+        eprintln!("error: {e}");
+        std::process::exit(1);
+    }
 }
