@@ -11,7 +11,6 @@ pub struct AbiReport {
 pub enum AbiType {
     Stable,
     Unstable,
-    Unknown,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
