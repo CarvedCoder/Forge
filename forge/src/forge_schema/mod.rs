@@ -46,6 +46,13 @@ pub struct Abi {
 
 #[derive(Debug, Deserialize, Serialize, Default)]
 #[serde(deny_unknown_fields)]
+pub struct PackageStatus {
+    pub resolved: bool,
+    pub unresolved: bool,
+}
+
+#[derive(Debug, Deserialize, Serialize, Default)]
+#[serde(deny_unknown_fields)]
 pub struct Package {
     pub name: String,
     pub version: String,
