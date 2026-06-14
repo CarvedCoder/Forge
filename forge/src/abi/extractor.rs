@@ -1,20 +1,27 @@
-use std::fs;
-use object::{Object, ObjectSymbol};
+use std::process::Command;
+
 use crate::abi::error::AbiError;
 
 pub fn extract_symbols(path: &str) -> Result<Vec<String>, AbiError> {
-    let data = fs::read(path).map_err(|_| AbiError::FileReadError)?;
+    let output = Command::new("nm")
+        .arg("-C") 
+        .arg(path)
+        .output()
+        .map_err(|_| AbiError::CommandError)?;
 
-    let obj = object::File::parse(&*data)
-        .map_err(|_| AbiError::ParseError)?;
+    if !output.status.success() {
+        return Err(AbiError::CommandError);
+    }
 
-    let symbols = obj
-        .symbols()
-        .filter(|sym| sym.is_global())
-        .filter_map(|sym| sym.name().ok())
-        .map(|name| name.to_string())
+    let stdout = String::from_utf8_lossy(&output.stdout);
+
+    let symbols = stdout
+        .lines()
+        .filter_map(|line| {
+            line.split_whitespace().last()
+        })
+        .map(|sym| sym.to_string())
         .collect();
 
     Ok(symbols)
-
 }

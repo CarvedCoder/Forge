@@ -27,5 +27,5 @@ pub struct ResolvedPackage {
     pub name: String,
     pub version: String,
     pub source_url: String,
-    pub sha257: String,
+    pub sha256: String,
 }
