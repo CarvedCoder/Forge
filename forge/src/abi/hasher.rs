@@ -6,7 +6,7 @@ pub fn generate_abi_hash(symbols: &[String]) -> String {
     let mut sorted: Vec<&str> = symbols.iter().map(|s| s.as_str()).collect();
     sorted.sort();
 
-    for sym in sorted {
+    for sym in &sorted {
         hasher.update(sym.as_bytes());
     }
 

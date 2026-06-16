@@ -8,20 +8,22 @@ use extractor::extract_symbols;
 use hasher::generate_abi_hash;
 use detector::detect_abi_type;
 
-pub fn analyze_binary(path: &str) -> Result<types::AbiReport, error::AbiError> {
+use types::{AbiReport, EnvironmentAbi, BinaryAbi};
+
+pub fn analyze_binary(path: &str) -> Result<AbiReport, error::AbiError> {
     let symbols = extract_symbols(path)?;
 
     let abi_hash = generate_abi_hash(&symbols);
     let abi_type = detect_abi_type(&symbols);
 
-    Ok(types::AbiReport {
+    Ok(AbiReport {
         abi_type,
-        environment: types::EnvironmentAbi {
-            compiler: "unknown".to_string(),
-            stdlib: "unknown".to_string(),
-            cxx_standard: "unknown".to_string(),
+        environment: EnvironmentAbi {
+            compiler: None,
+            stdlib: None,
+            cxx_standard: None,
         },
-        binary: types::BinaryAbi {
+        binary: BinaryAbi {
             symbols,
             abi_hash,
         },
