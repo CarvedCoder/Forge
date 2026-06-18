@@ -8,3 +8,4 @@ chrono = { version = "0.4.43", features = ["serde"] }
 serde = { version = "1.0.228", features = ["derive"] }
 toml = "1.1.2+spec-1.1.0"
 object = "0.36"
+sha2 = "0.10"

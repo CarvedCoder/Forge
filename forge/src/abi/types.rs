@@ -15,9 +15,14 @@ pub enum AbiType {
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct EnvironmentAbi {
-    pub compiler: String,
-    pub stdlib: String,
-    pub cxx_standard: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub compiler: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub stdlib: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cxx_standard: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
