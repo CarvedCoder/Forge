@@ -18,7 +18,7 @@ toml::table serialise(const Package &package) {
                      {"package-status", package.status}};
 }
 
-toml::table serialise(ResolvedPackage &resolved_package) {
+toml::table serialise(const ResolvedPackage &resolved_package) {
   return toml::table{{"name", resolved_package.name},
                      {"source", serialise(resolved_package.source)}};
 }

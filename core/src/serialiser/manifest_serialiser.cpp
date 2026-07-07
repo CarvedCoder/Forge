@@ -9,7 +9,7 @@
 #include <toml++/toml.hpp>
 
 namespace forge::serialiser {
-toml::table serialise(ForgeLock &forge_lock) {
+toml::table serialise(const ForgeLock &forge_lock) {
   toml::array resolved_packages;
   for (const ResolvedPackage &resolved_package : forge_lock.resolved_packages) {
     resolved_packages.emplace_back(serialise(resolved_package));
@@ -22,7 +22,7 @@ toml::table serialise(ForgeLock &forge_lock) {
   };
 }
 
-toml::table serialise(ForgeToml &forge_toml) {
+toml::table serialise(const ForgeToml &forge_toml) {
   toml::array packages;
   for (const Package &package : forge_toml.packages) {
     packages.emplace_back(serialise(package));
