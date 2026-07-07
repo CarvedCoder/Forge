@@ -1,5 +1,11 @@
 add_library(forge_core STATIC
-    src/serialiser/serialise.cpp
+    src/misc/timestamp.cpp
+    src/serialiser/project_serialiser.cpp
+    src/serialiser/abi_serialiser.cpp
+    src/serialiser/manifest_serialiser.cpp
+    src/serialiser/metadata_serialiser.cpp
+    src/serialiser/package_serialiser.cpp
+
 )
 
 target_include_directories(forge_core PUBLIC

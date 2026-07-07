@@ -1,9 +1,11 @@
+#pragma once
 #ifndef PACKAGE_H
 #define PACKAGE_H
 
 #include <string>
 
-enum class PackageStatus { Resolved, Unresolved };
+namespace forge {
+enum class PackageStatus { Resolved, Unresolved, None };
 
 struct GitSource {
   std::string url{};
@@ -15,6 +17,7 @@ struct Package {
   std::string package_name{};
   std::string version{};
   GitSource source{};
+  PackageStatus status{};
 };
 
 struct ResolvedPackage {
@@ -22,4 +25,5 @@ struct ResolvedPackage {
   GitSource source{};
 };
 
+} // namespace forge
 #endif // !PACKAGE_H
