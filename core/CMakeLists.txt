@@ -17,3 +17,7 @@ target_link_libraries(forge_core PUBLIC
 )
 
 target_compile_features(forge_core PUBLIC cxx_std_23)
+
+if(FORGE_BUILD_TESTS)
+       add_subdirectory(tests)
+   endif()

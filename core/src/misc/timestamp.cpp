@@ -5,10 +5,10 @@
 namespace forge::timestamp {
 
 std::string current_timestamp() {
-  auto now = std::chrono::system_clock::now();
+    auto now = std::chrono::system_clock::now();
 
-  auto zoned = std::chrono::zoned_time{std::chrono::current_zone(), now};
+    auto zoned = std::chrono::zoned_time{std::chrono::current_zone(), now};
 
-  return std::format("{:%FT%T%Ez}", zoned);
+    return std::format("{:%FT%T%Ez}", zoned);
 }
 } // namespace forge::timestamp

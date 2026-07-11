@@ -3,12 +3,14 @@
 #define ABI_SERIALISER_H
 
 #include <Forge/schema/abi.h>
+#include <Forge/schema/error.h>
+#include <expected>
 #include <toml++/toml.hpp>
 
 namespace forge::serialiser {
 
-toml::table serialise(const Abi &abi);
-Abi deserialise_abi(const toml::table &abi_toml);
+toml::table serialise(const Abi& abi);
+[[nodiscard]] std::expected<Abi, Error> deserialise_abi(const toml::table& toml_tbl);
 
 } // namespace forge::serialiser
 
