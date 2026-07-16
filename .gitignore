@@ -2,3 +2,4 @@ build_debug/
 build-debug/
 compile_commands.json
 .forge
+build/
