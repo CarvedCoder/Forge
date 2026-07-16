@@ -29,9 +29,11 @@ void register_init(CLI::App& app) {
         manifest.metadata = {.forge_version = "0.1.0", .cmake_version = "3.28"};
 
         toml::table serialised = serialiser::serialise(manifest);
+        std::filesystem::create_directory("src");
+        std::ofstream main("src/main.cpp");
         std::filesystem::create_directory(".forge");
-        std::ofstream out(".forge/forge.toml");
-        out << serialised;
+        std::ofstream toml(".forge/forge.toml");
+        toml << serialised;
 
         std::println("Created forge.toml for '{}'", project_name);
     });
